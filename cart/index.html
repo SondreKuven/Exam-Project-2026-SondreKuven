@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Oasis | Cart</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/cart.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="/index.html" class="logo">
+                <img src="../icons/BrandLogo.svg" alt="Urban Oasis logo">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button aria-label="Search" class="icon-button search-button">
+                    <img src="../icons/SearchIcon.svg" alt="Search">
+                </button>
+
+                <a href="/cart/index.html" class="icon-button" aria-label="Cart">
+                    <img src="../icons/CartIcon.svg" alt="Cart">
+                </a>
+
+                <a href="/account/login.html" class="icon-button" aria-label="Account">
+                    <img src="../icons/ProfileIcon.svg" alt="Account">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart-section" aria-labelledby="cart-title">
+            <div class="container cart-wrapper">
+                <h1 id="cart-title">Your Shopping Cart</h1>
+
+                <p class="empty-cart-message" id="empty-cart-message" hidden>
+                    Your cart is currently empty.
+                </p>
+
+                <div class="cart-layout">
+                    <div class="cart-items-wrapper">
+                        <div class="cart-items" id="cart-items"></div>
+                            <!-- Cart items are rendered here with JavaScript -->
+                        <button class="clear-cart-button" id="clear-cart-button">
+                        Clear Cart
+                        </button>
+                    </div>
+
+                    
+
+                    <div class="cart-summary">
+                        <p>Subtotal: <strong id="cart-subtotal">0 €</strong></p>
+                        <p>Shipping: <strong id="cart-shipping">0 €</strong></p>
+                        <p class="cart-total">Total: <strong id="cart-total">0 €</strong></p>
+
+                        <a href="/checkout/index.html" class="btn checkout-button">Proceed to checkout</a>
+
+                        <a href="/index.html" class="btn btn-secondary continue-shopping-button">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a href="/index.html" class="footer-logo">
+            <img src="../icons/BrandLogo.svg" alt="Urban Oasis logo">
+        </a>
+
+        <p class="copyright">&copy; 2026 Urban Oasis</p>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Terms Of Service</a>
+            <a href="#">FAQ</a>
+        </nav>
+    </footer>
+
+    <script src="../js/cart.js" type="module"></script>
+    
+</body>
+</html>
