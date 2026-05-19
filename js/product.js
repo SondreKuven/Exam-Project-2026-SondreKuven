@@ -72,7 +72,7 @@ function renderProduct(product) {
                 <div class="product-price">${priceHtml}</div>
                 <p class="product-description">${product.description}</p>
                 <div class="product-rating" aria-label="Product rating">${ratingHtml}</div>
-                <p class="product-reviews">reviews (${reviewsAmount})</p>
+                <p class="product-reviews">Reviews (${reviewsAmount})</p>
                 ${addToCartHtml}
             </div>
         </article>

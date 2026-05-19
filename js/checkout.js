@@ -75,7 +75,7 @@ function handleCheckoutSubmit(event) {
   const cart = getCart();
 
   if (cart.length === 0) {
-    showCheckoutError("your cart is empty.");
+    showCheckoutError("Your cart is empty.");
     return;
   }
 

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Login to your Urban Oasis account to view your orders, manage your account details and more." />
     <title>Urban Oasis | Login</title>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/auth.css" />
@@ -41,7 +42,7 @@
     </header>
 
     <main>
-      <section class="auth-section">
+      <section class="auth-section" aria-labelledby="login-title">
         <form class="auth-card" id="login-form">
           <h1 id="login-title">Login</h1>
           <p class="form-error" id="login-error" hidden>
@@ -71,7 +72,7 @@
               autocomplete="current-password"
               required
             />
-            <p class="form-error" id="login-email-error" hidden>
+            <p class="form-error" id="login-password-error" hidden>
               Please enter your password.
             </p>
           </div>

@@ -35,7 +35,7 @@ async function handleRegister(event) {
   }
 
   if (!email.endsWith("@stud.noroff.no")) {
-    showMessage("#register-email-error", "Please enter a valid email address.");
+    showMessage("#register-email-error", "Please enter a valid @stud.noroff.no email address.");
     isValid = false;
   }
 

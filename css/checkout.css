@@ -2,6 +2,12 @@
     padding: 2rem 0 2rem;
 }
 
+.checkout-section h1 {
+    width: min(1200px, 90%);
+    margin: 0 auto 4rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
 .checkout-layout {
     display: grid;
     grid-template-columns: 2.2fr 0.8fr;
