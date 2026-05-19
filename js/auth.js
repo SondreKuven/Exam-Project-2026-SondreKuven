@@ -67,7 +67,7 @@ async function handleRegister(event) {
     );
 
     setTimeout(function () {
-      window.location.href = "/account/login.html";
+      window.location.href = "../account/login.html";
     }, 2000);
   } catch (error) {
     showMessage("#register-error", error.message);
@@ -90,7 +90,7 @@ async function handleLogin(event) {
 
     saveUser(user);
 
-    window.location.href = "/index.html";
+    window.location.href = "../index.html";
   } catch (error) {
     showMessage("#login-error", error.message);
   }

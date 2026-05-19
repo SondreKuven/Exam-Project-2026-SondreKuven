@@ -127,7 +127,7 @@ function setupShareButton(productId) {
   }
 
   shareButton.addEventListener("click", async function () {
-    const shareUrl = `${window.location.origin}/product/index.html?id=${productId}`;
+    const shareUrl = `${window.location.origin}../product/index.html?id=${productId}`;
 
     try {
       await navigator.clipboard.writeText(shareUrl);

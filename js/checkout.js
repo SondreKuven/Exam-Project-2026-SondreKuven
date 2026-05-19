@@ -87,7 +87,7 @@ function handleCheckoutSubmit(event) {
 
   clearCart();
 
-  window.location.href = "/success/index.html";
+  window.location.href = "../success/index.html";
 }
 
 function calculateSubtotal(cart) {

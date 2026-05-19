@@ -52,7 +52,7 @@ function renderCarouselSlide(product) {
                 <p class="carousel-description">${shortDescription}</p>
 
                 <div class="carousel-actions">
-                    <a href="/product/index.html?id=${product.id}" class="btn">
+                    <a href="./product/index.html?id=${product.id}" class="btn">
                         View Product
                     </a>
                     
@@ -112,7 +112,7 @@ function createProductCard(product) {
 
   return `
         <article class="product-card">
-            <a href="product/index.html?id=${product.id}" class="product-card-image">
+            <a href="./product/index.html?id=${product.id}" class="product-card-image">
                 <img src="${imageUrl}" alt="${imageAlt}">
             </a>
 
@@ -122,7 +122,7 @@ function createProductCard(product) {
                     <p>${product.discountedPrice} €</p>
                 </div>
 
-                <a href="/product/index.html?id=${product.id}" class="btn btn-small">
+                <a href="./product/index.html?id=${product.id}" class="btn btn-small">
                     View Product
                 </a>
             </div>
