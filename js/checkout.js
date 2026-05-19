@@ -16,44 +16,44 @@ const SHIPPING_PRICE = 10;
 init();
 
 function init() {
-    renderCheckout();
-    setupPaymentFields();
+  renderCheckout();
+  setupPaymentFields();
 
-    if (checkoutForm) {
-        checkoutForm.addEventListener("submit", handleCheckoutSubmit);
-    }
+  if (checkoutForm) {
+    checkoutForm.addEventListener("submit", handleCheckoutSubmit);
+  }
 }
 
 function renderCheckout() {
-    const cart = getCart();
+  const cart = getCart();
 
-    if (!checkoutItemsContainer) {
-        return;
-    }
+  if (!checkoutItemsContainer) {
+    return;
+  }
 
-    checkoutItemsContainer.innerHTML = "";
+  checkoutItemsContainer.innerHTML = "";
 
-    if (cart.length === 0) {
-        checkoutItemsContainer.innerHTML = `
+  if (cart.length === 0) {
+    checkoutItemsContainer.innerHTML = `
             <p class="empty-checkout-message">Your cart is empty.</p>
         `;
 
-        updateTotals(0);
-        return;
-    }
+    updateTotals(0);
+    return;
+  }
 
-    for (let i = 0; i < cart.length; i++) {
-        checkoutItemsContainer.innerHTML += createCheckoutItemHTML(cart[i]);
-    }
+  for (let i = 0; i < cart.length; i++) {
+    checkoutItemsContainer.innerHTML += createCheckoutItemHTML(cart[i]);
+  }
 
-    updateTotals(calculateSubtotal(cart));
+  updateTotals(calculateSubtotal(cart));
 }
 
 function createCheckoutItemHTML(item) {
-    const imageUrl = item.image?.url || "../images/placeholder.jpg";
-    const imageAlt = item.image?.alt || item.title
+  const imageUrl = item.image?.url || "../images/placeholder.jpg";
+  const imageAlt = item.image?.alt || item.title;
 
-    return `
+  return `
         <article class="checkout-item">
             <img src="${imageUrl}" alt="${imageAlt}">
 
@@ -62,114 +62,118 @@ function createCheckoutItemHTML(item) {
                 <p>Price: <strong>${formatPrice(item.price)}</strong></p>
             </div>
 
-            <p class="checkout-item-quantity">Qty: <span>${item.quantity}</span></p>
+            <p class="checkout-item-quantity">Qty: <span>${
+              item.quantity
+            }</span></p>
         </article>
     `;
 }
 
 function handleCheckoutSubmit(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const cart = getCart();
+  const cart = getCart();
 
-    if (cart.length === 0) {
-        showCheckoutError("your cart is empty.");
-        return;
-    }
+  if (cart.length === 0) {
+    showCheckoutError("your cart is empty.");
+    return;
+  }
 
-    if (!checkoutForm.checkValidity()) {
-        showCheckoutError("Please fill out the required fields.");
-        checkoutForm.reportValidity();
-        return;
-    }
+  if (!checkoutForm.checkValidity()) {
+    showCheckoutError("Please fill out the required fields.");
+    checkoutForm.reportValidity();
+    return;
+  }
 
-    clearCart();
+  clearCart();
 
-    window.location.href = "/success/index.html";
+  window.location.href = "/success/index.html";
 }
 
 function calculateSubtotal(cart) {
-    let subtotal = 0;
+  let subtotal = 0;
 
-    for (let i = 0; i < cart.length; i++) {
-        subtotal += cart[i].price * cart[i].quantity;
-    }
+  for (let i = 0; i < cart.length; i++) {
+    subtotal += cart[i].price * cart[i].quantity;
+  }
 
-    return subtotal;
+  return subtotal;
 }
 
 function updateTotals(subtotal) {
-    const shipping = subtotal > 0 ? SHIPPING_PRICE : 0;
-    const total = subtotal + shipping;
+  const shipping = subtotal > 0 ? SHIPPING_PRICE : 0;
+  const total = subtotal + shipping;
 
-    if (checkoutSubtotal) {
-        checkoutSubtotal.textContent = formatPrice(subtotal);
-    }
+  if (checkoutSubtotal) {
+    checkoutSubtotal.textContent = formatPrice(subtotal);
+  }
 
-    if (checkoutShipping) {
-        checkoutShipping.textContent = formatPrice(shipping);
-    }
+  if (checkoutShipping) {
+    checkoutShipping.textContent = formatPrice(shipping);
+  }
 
-    if (checkoutTotal) {
-        checkoutTotal.textContent = formatPrice(total);
-    }
+  if (checkoutTotal) {
+    checkoutTotal.textContent = formatPrice(total);
+  }
 }
 
 function showCheckoutError(message) {
-    if (!checkoutError) {
-        return;
-    }
-    
-    checkoutError.textContent = message;
-    checkoutError.hidden = false;
+  if (!checkoutError) {
+    return;
+  }
+
+  checkoutError.textContent = message;
+  checkoutError.hidden = false;
 }
 
 function setupPaymentFields() {
-    if (!paymentRadios.length || !cardFields || !vippsFields || !klarnaFields) {
-        return;
-    }
+  if (!paymentRadios.length || !cardFields || !vippsFields || !klarnaFields) {
+    return;
+  }
 
-    for (let i = 0; i < paymentRadios.length; i++) {
-        paymentRadios[i].addEventListener("change", handlePaymentChange);
-    }
+  for (let i = 0; i < paymentRadios.length; i++) {
+    paymentRadios[i].addEventListener("change", handlePaymentChange);
+  }
 
-    handlePaymentChange();
+  handlePaymentChange();
 }
 
 function handlePaymentChange() {
-    const selectedPayment = document.querySelector("input[name='paymentMethod']:checked")?.value;
+  const selectedPayment = document.querySelector(
+    "input[name='paymentMethod']:checked"
+  )?.value;
 
-    cardFields.hidden = true;
-    vippsFields.hidden = true;
-    klarnaFields.hidden = true;
+  cardFields.hidden = true;
+  vippsFields.hidden = true;
+  klarnaFields.hidden = true;
 
-    setRequiredFields(cardFields, false);
-    setRequiredFields(vippsFields, false);
-    setRequiredFields(klarnaFields, false);
+  setRequiredFields(cardFields, false);
+  setRequiredFields(vippsFields, false);
+  setRequiredFields(klarnaFields, false);
 
-    if (selectedPayment === "card") {
-        cardFields.hidden = false;
-        setRequiredFields(cardFields, true);
-    }
+  if (selectedPayment === "card") {
+    cardFields.hidden = false;
+    setRequiredFields(cardFields, true);
+  }
 
-    if (selectedPayment === "vipps") {
-        vippsFields.hidden = false;
-        setRequiredFields(vippsFields, true);
-    }
+  if (selectedPayment === "vipps") {
+    vippsFields.hidden = false;
+    setRequiredFields(vippsFields, true);
+  }
 
-    if (selectedPayment === "klarna") {
-        klarnaFields.hidden = false;
-    }
+  if (selectedPayment === "klarna") {
+    klarnaFields.hidden = false;
+  }
 }
 
 function setRequiredFields(container, isRequired) {
-    const inputs = container.querySelectorAll("input");
+  const inputs = container.querySelectorAll("input");
 
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].required = isRequired;
-    }
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].required = isRequired;
+  }
 }
 
 function formatPrice(price) {
-    return `${price.toFixed(2)} €`;
+  return `${price.toFixed(2)} €`;
 }

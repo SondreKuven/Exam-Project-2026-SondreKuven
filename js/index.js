@@ -5,7 +5,7 @@ const loadingMessage = document.querySelector("#products-loading");
 const errorMessage = document.querySelector("#products-error");
 const carouselTrack = document.querySelector("#carousel-track");
 const carouselPrev = document.querySelector("#carousel-prev");
-const carouselNext = document.querySelector("#carousel-next")
+const carouselNext = document.querySelector("#carousel-next");
 
 let carouselProducts = [];
 let currentSlideIndex = 0;
@@ -13,36 +13,36 @@ let currentSlideIndex = 0;
 init();
 
 async function init() {
-    try {
-        const products = await fetchAllProducts();
+  try {
+    const products = await fetchAllProducts();
 
-        carouselProducts = products.slice(0, 3);
-        
-        renderProducts(products.slice(0, 12));
-        renderCarouselSlide(carouselProducts[currentSlideIndex]);
-        setupCarouselButtons();
-    } catch (error) {
-        console.error(error)
-        showError();
-    } finally {
-        hideLoading();
-    }
+    carouselProducts = products.slice(0, 3);
+
+    renderProducts(products.slice(0, 12));
+    renderCarouselSlide(carouselProducts[currentSlideIndex]);
+    setupCarouselButtons();
+  } catch (error) {
+    console.error(error);
+    showError();
+  } finally {
+    hideLoading();
+  }
 }
 
 function renderCarouselSlide(product) {
-    if (!carouselTrack) {
-        return;
-    }
+  if (!carouselTrack) {
+    return;
+  }
 
-    const imageUrl = product.image?.url || "../images/placeholder.jpg";
-    const imageAlt = product.image?.alt || product.title;
+  const imageUrl = product.image?.url || "../images/placeholder.jpg";
+  const imageAlt = product.image?.alt || product.title;
 
-    const shortDescription =
-        product.description.length > 120
-            ? product.description.slice(0, 120) + "..."
-            : product. description;
+  const shortDescription =
+    product.description.length > 120
+      ? product.description.slice(0, 120) + "..."
+      : product.description;
 
-    carouselTrack.innerHTML = `
+  carouselTrack.innerHTML = `
         <article class="carousel-slide">
             <div class="carousel-text">
                 <p class="carousel-label">Featured Product</p>
@@ -70,47 +70,47 @@ function renderCarouselSlide(product) {
 }
 
 function setupCarouselButtons() {
-    if (!carouselPrev || !carouselNext) {
-        return;
-    }
+  if (!carouselPrev || !carouselNext) {
+    return;
+  }
 
-    carouselNext.addEventListener("click", showNextSlide);
-    carouselPrev.addEventListener("click", showPreviousSlide);
+  carouselNext.addEventListener("click", showNextSlide);
+  carouselPrev.addEventListener("click", showPreviousSlide);
 }
 
 function showNextSlide() {
-    currentSlideIndex++;
+  currentSlideIndex++;
 
-    if (currentSlideIndex >= carouselProducts.length) {
-        currentSlideIndex = 0;
-    }
+  if (currentSlideIndex >= carouselProducts.length) {
+    currentSlideIndex = 0;
+  }
 
-    renderCarouselSlide(carouselProducts[currentSlideIndex]);
+  renderCarouselSlide(carouselProducts[currentSlideIndex]);
 }
 
 function showPreviousSlide() {
-    currentSlideIndex--;
+  currentSlideIndex--;
 
-    if (currentSlideIndex < 0) {
-        currentSlideIndex = carouselProducts.length - 1;
-    }
+  if (currentSlideIndex < 0) {
+    currentSlideIndex = carouselProducts.length - 1;
+  }
 
-    renderCarouselSlide(carouselProducts[currentSlideIndex]);
+  renderCarouselSlide(carouselProducts[currentSlideIndex]);
 }
 
 function renderProducts(products) {
-    productGrid.innerHTML = "";
+  productGrid.innerHTML = "";
 
-    for (let i = 0; i < products.length; i++) {
-        productGrid.innerHTML += createProductCard(products[i]);
-    }
+  for (let i = 0; i < products.length; i++) {
+    productGrid.innerHTML += createProductCard(products[i]);
+  }
 }
 
 function createProductCard(product) {
-    const imageUrl = product.image?.url || "../images/placeholder.jpg";
-    const imageAlt = product.image?.alt || product.title;
+  const imageUrl = product.image?.url || "../images/placeholder.jpg";
+  const imageAlt = product.image?.alt || product.title;
 
-    return `
+  return `
         <article class="product-card">
             <a href="product/index.html?id=${product.id}" class="product-card-image">
                 <img src="${imageUrl}" alt="${imageAlt}">
@@ -131,9 +131,9 @@ function createProductCard(product) {
 }
 
 function hideLoading() {
-    loadingMessage.hidden = true;
+  loadingMessage.hidden = true;
 }
 
 function showError() {
-    errorMessage.hidden =false;
+  errorMessage.hidden = false;
 }

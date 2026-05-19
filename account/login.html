@@ -1,96 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Urban Oasis | Login</title>
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/auth.css">
-</head>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+  </head>
 
-<body>
+  <body>
     <header class="site-header">
-        <nav class="navbar" aria-label="Main navigation">
-            <a href="/index.html" class="logo">
-                <img src="../icons/BrandLogo.svg" alt="Urban Oasis logo">
-            </a>
+      <nav class="navbar" aria-label="Main navigation">
+        <a href="/index.html" class="logo">
+          <img src="../icons/BrandLogo.svg" alt="Urban Oasis logo" />
+        </a>
 
-            <ul class="nav-links">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+        <ul class="nav-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
 
-            <div class="nav-actions">
-                <button aria-label="Search" class="icon-button search-button">
-                    <img src="../icons/SearchIcon.svg" alt="Search">
-                </button>
+        <div class="nav-actions">
+          <button aria-label="Search" class="icon-button search-button">
+            <img src="../icons/SearchIcon.svg" alt="Search" />
+          </button>
 
-                <a href="/cart/index.html" class="icon-button" aria-label="Cart">
-                    <img src="../icons/CartIcon.svg" alt="Cart">
-                </a>
+          <a href="/cart/index.html" class="icon-button" aria-label="Cart">
+            <img src="../icons/CartIcon.svg" alt="Cart" />
+          </a>
 
-                <a href="/account/login.html" class="icon-button" aria-label="Account">
-                    <img src="../icons/ProfileIcon.svg" alt="Account">
-                </a>
-            </div>
-        </nav>
+          <a
+            href="/account/login.html"
+            class="icon-button"
+            aria-label="Account"
+          >
+            <img src="../icons/ProfileIcon.svg" alt="Account" />
+          </a>
+        </div>
+      </nav>
     </header>
 
     <main>
-        <section class="auth-section">
-            <form class="auth-card" id="login-form">
-                <h1 id="login-title">Login</h1>
-                <p class="form-error" id="login-error" hidden>
-                    Login failed. Please check your email and password.
-                </p>
+      <section class="auth-section">
+        <form class="auth-card" id="login-form">
+          <h1 id="login-title">Login</h1>
+          <p class="form-error" id="login-error" hidden>
+            Login failed. Please check your email and password.
+          </p>
 
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" name="email" autocomplete="email" required>
-                    <p class="form-error" id="login-email-error" hidden>
-                        Please enter a valid email address.
-                    </p>
-                </div>
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input
+              type="email"
+              id="login-email"
+              name="email"
+              autocomplete="email"
+              required
+            />
+            <p class="form-error" id="login-email-error" hidden>
+              Please enter a valid email address.
+            </p>
+          </div>
 
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" name="password" autocomplete="current-password" required>
-                    <p class="form-error" id="login-email-error" hidden>
-                        Please enter your password.
-                    </p>
-                </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input
+              type="password"
+              id="login-password"
+              name="password"
+              autocomplete="current-password"
+              required
+            />
+            <p class="form-error" id="login-email-error" hidden>
+              Please enter your password.
+            </p>
+          </div>
 
-                <label class="remember-me">
-                    <input type="checkbox" id="remember-me" name="rememberMe">
-                    Remember me
-                </label>
+          <label class="remember-me">
+            <input type="checkbox" id="remember-me" name="rememberMe" />
+            Remember me
+          </label>
 
-                <button type="submit" class="btn auth-button">
-                    Login
-                </button>
+          <button type="submit" class="btn auth-button">Login</button>
 
-                <p class="auth-link-text">
-                    Don't have an account? <a href="/account/register.html">Register here</a>.
-                </p>
-            </form>
-        </section>
+          <p class="auth-link-text">
+            Don't have an account?
+            <a href="/account/register.html">Register here</a>.
+          </p>
+        </form>
+      </section>
     </main>
 
     <footer class="site-footer">
-        <a href="/index.html" class="footer-logo">
-            <img src="../icons/BrandLogo.svg" alt="Urban Oasis logo">
-        </a>
+      <a href="/index.html" class="footer-logo">
+        <img src="../icons/BrandLogo.svg" alt="Urban Oasis logo" />
+      </a>
 
-        <p class="copyright">&copy; 2026 Urban Oasis</p>
+      <p class="copyright">&copy; 2026 Urban Oasis</p>
 
-        <nav class="footer-nav" aria-label="Footer navigation">
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-            <a href="#">Terms Of Service</a>
-            <a href="#">FAQ</a>
-        </nav>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Terms Of Service</a>
+        <a href="#">FAQ</a>
+      </nav>
     </footer>
 
     <script type="module" src="../js/auth.js"></script>
-</body>
+  </body>
 </html>

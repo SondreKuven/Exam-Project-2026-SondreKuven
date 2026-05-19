@@ -2,62 +2,61 @@ import { fetchProductById } from "./utils/api.js";
 import { addToCart } from "./utils/storage.js";
 import { isLoggedIn } from "./utils/authStorage.js";
 
-const productLayout = document.querySelector("#product-layout")
-const loadingMessage = document.querySelector("#product-loading")
-const errorMessage = document.querySelector("#product-error")
+const productLayout = document.querySelector("#product-layout");
+const loadingMessage = document.querySelector("#product-loading");
+const errorMessage = document.querySelector("#product-error");
 
 init();
 
 async function init() {
-    try {
-        const productId =getProductIdFromUrl();
+  try {
+    const productId = getProductIdFromUrl();
 
-        if(!productId) {
-            throw new Error("No product ID found in URL")
-        }
-
-        const product = await fetchProductById(productId);
-        
-        renderProduct(product);
-    } catch (error){
-        console.error(error);
-        showError();
-    } finally {
-        hideLoading();
+    if (!productId) {
+      throw new Error("No product ID found in URL");
     }
+
+    const product = await fetchProductById(productId);
+
+    renderProduct(product);
+  } catch (error) {
+    console.error(error);
+    showError();
+  } finally {
+    hideLoading();
+  }
 }
 
 function getProductIdFromUrl() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("id");
+  const params = new URLSearchParams(window.location.search);
+  return params.get("id");
 }
 
 function renderProduct(product) {
-    if (!productLayout) {
-        return;
-    }
+  if (!productLayout) {
+    return;
+  }
 
-    const imageUrl = product.image?.url || "../images/placeholder.jpg";
-    const imageAlt = product.image?.alt || product.title;
+  const imageUrl = product.image?.url || "../images/placeholder.jpg";
+  const imageAlt = product.image?.alt || product.title;
 
-    const priceHtml = getPriceHtml(product);
-    const ratingHtml = getRatingHtml(product.rating);
-    const reviewsAmount = product.reviews ? product.reviews.length : 0;
-    const tagsHtml = getTagsHtml(product.tags);
+  const priceHtml = getPriceHtml(product);
+  const ratingHtml = getRatingHtml(product.rating);
+  const reviewsAmount = product.reviews ? product.reviews.length : 0;
+  const tagsHtml = getTagsHtml(product.tags);
 
-    const addToCartHtml = isLoggedIn()
-        ? `
+  const addToCartHtml = isLoggedIn()
+    ? `
         <button type="button" class="btn add-cart-button" id="add-to-cart-button">Add to cart</button>
         `
-
-        :`
+    : `
         <p class="login-required-message">
             Please <a href="/account/login.html">login</a> to add this product to your cart.
         </p>
         
         `;
 
-    productLayout.innerHTML = `
+  productLayout.innerHTML = `
         <article class="product-content">
             <div class="product-image-wrapper">
                 <img src="${imageUrl}" alt="${imageAlt}">
@@ -79,98 +78,97 @@ function renderProduct(product) {
         </article>
     `;
 
-    setupShareButton(product.id);
-    if (isLoggedIn()){
-        setupAddToCartButton(product);
-    }
+  setupShareButton(product.id);
+  if (isLoggedIn()) {
+    setupAddToCartButton(product);
+  }
 }
 
 function getPriceHtml(product) {
-    if (product.discountedPrice && product.discountedPrice < product.price) {
-        return `
+  if (product.discountedPrice && product.discountedPrice < product.price) {
+    return `
             <p class="current-price">${product.discountedPrice} €</p>
             <p class="original-price">${product.price} €</p>
         `;
-    }
+  }
 
-    return `<p class="current-price">${product.price} €</p>`;
+  return `<p class="current-price">${product.price} €</p>`;
 }
 
 function getRatingHtml(rating) {
-    const roundedRating = Math.round(rating || 0);
-    let stars = "";
+  const roundedRating = Math.round(rating || 0);
+  let stars = "";
 
-    for (let i= 1; i <= 5; i++) {
-        stars += i <= roundedRating ? "&starf;" : "&star;"
-    }
+  for (let i = 1; i <= 5; i++) {
+    stars += i <= roundedRating ? "&starf;" : "&star;";
+  }
 
-    return `<span aria-hidden="true">${stars}</span>`;
+  return `<span aria-hidden="true">${stars}</span>`;
 }
 
 function getTagsHtml(tags) {
-    if (!tags || tags.length === 0) {
-        return "";
-    }
+  if (!tags || tags.length === 0) {
+    return "";
+  }
 
-    let html = "";
-    for (let i = 0; i < tags.length; i++) {
-        html += `<span>${tags[i]}</span>`;
-    }
+  let html = "";
+  for (let i = 0; i < tags.length; i++) {
+    html += `<span>${tags[i]}</span>`;
+  }
 
-    return html;
-} 
+  return html;
+}
 
 function setupShareButton(productId) {
-    const shareButton = document.querySelector("#share-button");
+  const shareButton = document.querySelector("#share-button");
 
-    if (!shareButton) {
-        return;
+  if (!shareButton) {
+    return;
+  }
+
+  shareButton.addEventListener("click", async function () {
+    const shareUrl = `${window.location.origin}/product/index.html?id=${productId}`;
+
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      shareButton.textContent = "Copied!";
+    } catch (error) {
+      console.error("Could not copy URL:", error);
+      shareButton.textContent = "Copy failed";
     }
 
-    shareButton.addEventListener("click", async function () {
-        const shareUrl = `${window.location.origin}/product/index.html?id=${productId}`;
-
-        try {
-            await navigator.clipboard.writeText(shareUrl);
-            shareButton.textContent = "Copied!"
-        } catch (error) {
-            console.error("Could not copy URL:", error);
-            shareButton.textContent = "Copy failed";
-        }
-
-        setTimeout(function () {
-            shareButton.textContent = "Share";
-        }, 2000); 
-    });
+    setTimeout(function () {
+      shareButton.textContent = "Share";
+    }, 2000);
+  });
 }
 
 function setupAddToCartButton(product) {
-    const addToCartButton = document.querySelector("#add-to-cart-button");
+  const addToCartButton = document.querySelector("#add-to-cart-button");
 
-    if (!addToCartButton) {
-        return;
-    }
+  if (!addToCartButton) {
+    return;
+  }
 
-    addToCartButton.addEventListener("click", function() {
+  addToCartButton.addEventListener("click", function () {
+    addToCart(product);
 
-        addToCart(product);
+    addToCartButton.textContent = "Added!";
 
-        addToCartButton.textContent = "Added!";
-
-        setTimeout(function () {
-            addToCartButton.textContent = "Add to cart";
-        }, 1500);
-    });
+    setTimeout(function () {
+      addToCartButton.textContent = "Add to cart";
+    }, 1500);
+  });
 }
 
 function hideLoading() {
-    if (loadingMessage) {
-        loadingMessage.hidden = true;
-    }
+  if (loadingMessage) {
+    loadingMessage.hidden = true;
+  }
 }
 
 function showError() {
-    if (errorMessage) {
-        errorMessage.hidden = false;
-    }
+  if (errorMessage) {
+    errorMessage.hidden = false;
+  }
 }

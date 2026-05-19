@@ -34,7 +34,7 @@
     gap: 2rem
 }
 
-.form-row + .form-row {
+.form-row+.form-row {
     margin-top: 1rem;
 }
 
@@ -152,7 +152,7 @@
 }
 
 .checkout-total {
-    margin-top:  3rem !important;
+    margin-top: 3rem !important;
 }
 
 .complete-purchase-button {
@@ -175,6 +175,7 @@
 }
 
 @media (max-width: 700px) {
+
     .form-row,
     .payment-option,
     .payment-fields {

@@ -1,188 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Urban Oasis | Checkout</title>
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/checkout.css">
-</head>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/checkout.css" />
+  </head>
 
-<body>
+  <body>
     <header class="site-header">
-        <nav class="navbar" aria-label="Main navigation">
-            <a href="/index.html" class="logo">
-                <img src="../icons/BrandLogo.svg" alt="Urban Oasis logo">
-            </a>
+      <nav class="navbar" aria-label="Main navigation">
+        <a href="/index.html" class="logo">
+          <img src="../icons/BrandLogo.svg" alt="Urban Oasis logo" />
+        </a>
 
-            <ul class="nav-links">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+        <ul class="nav-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
 
-            <div class="nav-actions">
-                <button aria-label="Search" class="icon-button search-button">
-                    <img src="../icons/SearchIcon.svg" alt="Search">
-                </button>
+        <div class="nav-actions">
+          <button aria-label="Search" class="icon-button search-button">
+            <img src="../icons/SearchIcon.svg" alt="Search" />
+          </button>
 
-                <a href="/cart/index.html" class="icon-button" aria-label="Cart">
-                    <img src="../icons/CartIcon.svg" alt="Cart">
-                </a>
+          <a href="/cart/index.html" class="icon-button" aria-label="Cart">
+            <img src="../icons/CartIcon.svg" alt="Cart" />
+          </a>
 
-                <a href="/account/login.html" class="icon-button" aria-label="Account">
-                    <img src="../icons/ProfileIcon.svg" alt="Account">
-                </a>
-            </div>
-        </nav>
+          <a
+            href="/account/login.html"
+            class="icon-button"
+            aria-label="Account"
+          >
+            <img src="../icons/ProfileIcon.svg" alt="Account" />
+          </a>
+        </div>
+      </nav>
     </header>
 
     <main>
-       <section class="checkout-section" aria-labelledby="checkout-title">
-            <div class="container checkout-layout">
-                <form class="checkout-form" id="checkout-form">
-                    <fieldset class="delivery-form">
-                        <legend class="sr-only">Delivery information</legend>
+      <section class="checkout-section" aria-labelledby="checkout-title">
+        <div class="container checkout-layout">
+          <form class="checkout-form" id="checkout-form">
+            <fieldset class="delivery-form">
+              <legend class="sr-only">Delivery information</legend>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="first-name">First Name</label>
-                                <input type="text" id="first-name" name="firstName" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="last-name">Last Name</label>
-                                <input type="text" id="last-name" name="lastName" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="address-one">Address 1</label>
-                                <input type="text" id="address-one" name="addressOne" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="address-two">Address 2</label>
-                                <input type="text" id="address-two" name="addressTwo">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <input type="text" id="city" name="city" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="zip-code">Zip Code</label>
-                                <input type="text" id="zip-code" name="zipCode" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group country-field">
-                            <label for="country">Country</label>
-                            <input type="text" id="country" name="country" required>
-                        </div>
-                    </fieldset>
-
-                    <fieldset class="payment-form">
-                        <legend class="sr-only">Payment method</legend>
-
-                        <div class="payment-options">
-                            <label>
-                                <input type="radio" name="paymentMethod" value="card" checked>
-                                Credit Card
-                            </label>
-
-                            <label>
-                                <input type="radio" name="paymentMethod" value="card">
-                                Debit Card
-                            </label>
-
-                            <label>
-                                <input type="radio" name="paymentMethod" value="vipps">
-                                Vipps
-                            </label>
-
-                            <label>
-                                <input type="radio" name="paymentMethod" value="klarna">
-                                Klarna
-                            </label>
-                        </div>
-
-                        <div class="payment-fields" id="card-fields">
-                            <div class="form-group card-number-field">
-                                <label for="card-number">Card Number</label>
-                                <input type="text" id="card-number" name="cardNumber">
-                            </div>
-
-                            <div class="form-group ccv-field">
-                                <label for="ccv">CCV</label>
-                                <input type="text" id="ccv" name="ccv">
-                            </div>
-
-                            <div class="form-group expiration-date-field">
-                                <label for="expiry-date">Expiration Date</label>
-                                <input type="text" id="expiry-date" name="expiryDate" placeholder="MM/YY">
-                            </div>
-                        </div>
-
-                        <div class="payment-fields" id="vipps-fields" hidden>
-                            <div class="form-group">
-                                <label for="phone-number">Phone number</label>
-                                <input type="tel" id="phone-number" name="phoneNumber">
-                            </div>
-                        </div>
-
-                        <div class="payment-fields" id="klarna-fields" hidden>
-                            <p class="payment-info">
-                                You will receive payment instructions after completing the purchase.
-                            </p>
-                        </div>
-                    </fieldset>
-                </form>
-
-                <div class="checkout-summary">
-                    <div class="checkout-items" id="checkout-items">
-                        <!-- Cart items will be rendered here with JavaScript  -->
-                    </div>
-
-                    <div class="checkout-totals">
-                        <p>Subtotal <strong id="checkout-subtotal">0 €</strong></p>
-                        <p>Shipping: <strong id="checkout-shipping">0 €</strong></p>
-
-                        <p class="checkout-total">
-                            Total: <strong id="checkout-total">0 €</strong>
-                        </p>
-                    </div>
-
-                    <button type="submit" form="checkout-form" class="btn complete-purchase-button">
-                        Complete Purchase
-                    </button>
-
-                    <p class="form-error" id="checkout-error" hidden>
-                        Please fill out the required fields.
-                    </p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="first-name">First Name</label>
+                  <input
+                    type="text"
+                    id="first-name"
+                    name="firstName"
+                    required
+                  />
                 </div>
+
+                <div class="form-group">
+                  <label for="last-name">Last Name</label>
+                  <input type="text" id="last-name" name="lastName" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="address-one">Address 1</label>
+                  <input
+                    type="text"
+                    id="address-one"
+                    name="addressOne"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="address-two">Address 2</label>
+                  <input type="text" id="address-two" name="addressTwo" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" id="city" name="city" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="zip-code">Zip Code</label>
+                  <input type="text" id="zip-code" name="zipCode" required />
+                </div>
+              </div>
+
+              <div class="form-group country-field">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" required />
+              </div>
+            </fieldset>
+
+            <fieldset class="payment-form">
+              <legend class="sr-only">Payment method</legend>
+
+              <div class="payment-options">
+                <label>
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="card"
+                    checked
+                  />
+                  Credit Card
+                </label>
+
+                <label>
+                  <input type="radio" name="paymentMethod" value="card" />
+                  Debit Card
+                </label>
+
+                <label>
+                  <input type="radio" name="paymentMethod" value="vipps" />
+                  Vipps
+                </label>
+
+                <label>
+                  <input type="radio" name="paymentMethod" value="klarna" />
+                  Klarna
+                </label>
+              </div>
+
+              <div class="payment-fields" id="card-fields">
+                <div class="form-group card-number-field">
+                  <label for="card-number">Card Number</label>
+                  <input type="text" id="card-number" name="cardNumber" />
+                </div>
+
+                <div class="form-group ccv-field">
+                  <label for="ccv">CCV</label>
+                  <input type="text" id="ccv" name="ccv" />
+                </div>
+
+                <div class="form-group expiration-date-field">
+                  <label for="expiry-date">Expiration Date</label>
+                  <input
+                    type="text"
+                    id="expiry-date"
+                    name="expiryDate"
+                    placeholder="MM/YY"
+                  />
+                </div>
+              </div>
+
+              <div class="payment-fields" id="vipps-fields" hidden>
+                <div class="form-group">
+                  <label for="phone-number">Phone number</label>
+                  <input type="tel" id="phone-number" name="phoneNumber" />
+                </div>
+              </div>
+
+              <div class="payment-fields" id="klarna-fields" hidden>
+                <p class="payment-info">
+                  You will receive payment instructions after completing the
+                  purchase.
+                </p>
+              </div>
+            </fieldset>
+          </form>
+
+          <div class="checkout-summary">
+            <div class="checkout-items" id="checkout-items">
+              <!-- Cart items will be rendered here with JavaScript  -->
             </div>
-       </section>
+
+            <div class="checkout-totals">
+              <p>Subtotal <strong id="checkout-subtotal">0 €</strong></p>
+              <p>Shipping: <strong id="checkout-shipping">0 €</strong></p>
+
+              <p class="checkout-total">
+                Total: <strong id="checkout-total">0 €</strong>
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              form="checkout-form"
+              class="btn complete-purchase-button"
+            >
+              Complete Purchase
+            </button>
+
+            <p class="form-error" id="checkout-error" hidden>
+              Please fill out the required fields.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-        <a href="/index.html" class="footer-logo">
-            <img src="../icons/BrandLogo.svg" alt="Urban Oasis logo">
-        </a>
+      <a href="/index.html" class="footer-logo">
+        <img src="../icons/BrandLogo.svg" alt="Urban Oasis logo" />
+      </a>
 
-        <p class="copyright">&copy; 2026 Urban Oasis</p>
+      <p class="copyright">&copy; 2026 Urban Oasis</p>
 
-        <nav class="footer-nav" aria-label="Footer navigation">
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-            <a href="#">Terms Of Service</a>
-            <a href="#">FAQ</a>
-        </nav>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Terms Of Service</a>
+        <a href="#">FAQ</a>
+      </nav>
     </footer>
 
     <script type="module" src="../js/checkout.js"></script>
-</body>
+  </body>
 </html>
