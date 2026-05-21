@@ -56,9 +56,8 @@ function renderCarouselSlide(product) {
                         View Product
                     </a>
                     
-                    <p class="carousel-price">
-                        ${product.discountedPrice} €
-                    </p>
+                    <p class="carousel-discounted-price">${product.discountedPrice} €</p>
+                    <p class="carousel-original-price">${product.price} €</p>
                 </div>
             </div>
 
@@ -119,7 +118,10 @@ function createProductCard(product) {
             <div class="product-card-content">
                 <div class="product-card-info">
                     <h2>${product.title}</h2>
-                    <p>${product.discountedPrice} €</p>
+                    <div class="price-info">
+                      <p class="discounted-price">${product.discountedPrice} €</p>
+                      <p class="original-price">${product.price} €</p>
+                    </div>
                 </div>
 
                 <a href="./product/index.html?id=${product.id}" class="btn btn-small">

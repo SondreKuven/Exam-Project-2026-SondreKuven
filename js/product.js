@@ -51,7 +51,7 @@ function renderProduct(product) {
         `
     : `
         <p class="login-required-message">
-            Please <a href="/account/login.html">login</a> to add this product to your cart.
+            Please <a href="../account/login.html">login</a> to add this product to your cart.
         </p>
         
         `;

@@ -57,7 +57,7 @@
 
 .original-price {
     margin: 0.25rem 0 0;
-    color: var(--color-border);
+    opacity: 0.5;
     text-decoration: line-through;
 }
 
