@@ -122,7 +122,6 @@
 
 .carousel-btn:hover {
     transform: translateY(-2px);
-    background: #f9fafb;
 }
 
 .carousel-btn img {
@@ -160,7 +159,7 @@
 .section-header p:last-child {
     margin: 1rem auto 0;
     max-width: 520px;
-    color: #6b7280;
+    color: #4b5563;
     font-weight: 500;
 }
 
