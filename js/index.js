@@ -110,22 +110,22 @@ function createProductCard(product) {
   const imageAlt = product.image?.alt || product.title;
 
   return `
-        <article class="product-card">
+        <article class="product-card" id="product-card">
             <a href="./product/index.html?id=${product.id}" class="product-card-image">
                 <img src="${imageUrl}" alt="${imageAlt}">
+
+              <div class="product-card-content">
+                  <div class="product-card-info">
+                      <h2>${product.title}</h2>
+                      <div class="price-info">
+                        <p class="discounted-price">${product.discountedPrice} €</p>
+                        <p class="original-price">${product.price} €</p>
+                      </div>
+                  </div>
+
+                  <span class="btn btn-small" aria-hidden="true">View Product</span>
+              </div>
             </a>
-
-            <div class="product-card-content">
-                <div class="product-card-info">
-                    <h2>${product.title}</h2>
-                    <div class="price-info">
-                      <p class="discounted-price">${product.discountedPrice} €</p>
-                      <p class="original-price">${product.price} €</p>
-                    </div>
-                </div>
-
-                <span class="btn btn-small" aria-hidden="true">View Product</span>
-            </div>
         </article>
     `;
 }
