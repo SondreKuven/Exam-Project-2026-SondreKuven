@@ -64,7 +64,7 @@ function renderProduct(product) {
 
             <div class="product-info">
                 <div class="product-title-row">
-                    <h1>${product.title}</h1>
+                    <h2 id="product-title">${product.title}</h2>
                     <button type="button" class="share-button" id="share-button" aria-label="Share product">Share</button>
                 </div>
                 <div class="product-tags">${tagsHtml}</div>

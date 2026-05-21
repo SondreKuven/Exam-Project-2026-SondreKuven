@@ -124,9 +124,7 @@ function createProductCard(product) {
                     </div>
                 </div>
 
-                <a href="./product/index.html?id=${product.id}" class="btn btn-small">
-                    View Product
-                </a>
+                <span class="btn btn-small" aria-hidden="true">View Product</span>
             </div>
         </article>
     `;

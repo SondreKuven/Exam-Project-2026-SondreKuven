@@ -39,7 +39,7 @@
     gap: 1rem;
 }
 
-.product-info h1 {
+.product-info h2 {
     margin: 0 0 1rem;
     font-size: clamp(2rem, 4vw, 3rem);
     line-height: 1.1;
