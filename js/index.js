@@ -110,7 +110,7 @@ function createProductCard(product) {
   const imageAlt = product.image?.alt || product.title;
 
   return `
-        <article class="product-card" id="product-card">
+        <article class="product-card">
             <a href="./product/index.html?id=${product.id}" class="product-card-image">
                 <img src="${imageUrl}" alt="${imageAlt}">
 
